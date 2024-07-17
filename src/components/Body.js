@@ -5,7 +5,12 @@ import Task from './Task'
 const Body = () => {
   const [task, setTask] = useState('')
   const [listItem, setListItem] = useState([])
-  
+
+  const deleteItem = (index) => {
+    const newList = [...listItem]
+    newList.splice(index, 1)
+    setListItem(newList)
+  }
 
   return (
     <div className='flex flex-col items-center justify-center w-full'> 
@@ -33,7 +38,7 @@ const Body = () => {
         </span>
         <div className='pt-5'>
           {listItem && listItem.map((i ,index)=>
-            <Task itemno={index+1} info={i}/>
+            <Task itemno={index+1} info={i} deleteItem={deleteItem}/>
           )}
         </div>
 

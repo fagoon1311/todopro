@@ -1,6 +1,7 @@
 import './App.css';
 import Body from './components/Body';
-import Task from './components/Task'
+
+
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <div className='flex p-4 m-2 rounded-md shadow-md items-center justify-center'><h1 className='text-white text-5xl font-bold'>To-do-List</h1></div>
       <Body />
     </div>
+    // <Rick />
   );
 }
 
