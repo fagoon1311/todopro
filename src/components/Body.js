@@ -5,11 +5,33 @@ import Task from './Task'
 const Body = () => {
   const [task, setTask] = useState('')
   const [listItem, setListItem] = useState([])
-
+  const [edit, setEdit] = useState(false)
+  const [editIndex, setEditIndex] = useState(null)
+  const [editText, setEditText] = useState('')
+  
   const deleteItem = (index) => {
     const newList = [...listItem]
     newList.splice(index, 1)
     setListItem(newList)
+  }
+  const editItem = (index) => {
+    setEdit(true)
+    setEditIndex(index)
+    setEditText(listItem[index])
+  }
+
+  const saveEdit = (index) => {
+    const newList = [...listItem]
+    newList[index] = editText
+    setListItem(newList)
+    setEdit(false)
+    setEditIndex(null)
+    setEditText('')
+  }
+
+  const completedItem = (index) => {
+    deleteItem(index)
+    alert("Task succesfully completed")
   }
 
   return (
@@ -38,7 +60,18 @@ const Body = () => {
         </span>
         <div className='pt-5'>
           {listItem && listItem.map((i ,index)=>
-            <Task itemno={index+1} info={i} deleteItem={deleteItem}/>
+            <Task 
+            itemno={index+1} 
+            info={i} 
+            deleteItem={deleteItem} 
+            completedItem={completedItem} 
+            editItem={editItem}  
+            edit={edit} 
+            saveEdit={saveEdit} 
+            editText={editText}
+            setEditText={setEditText}
+            editIndex={editIndex}
+           />
           )}
         </div>
 
