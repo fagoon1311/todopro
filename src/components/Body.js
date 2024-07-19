@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useEffect } from 'react'  
+import { useState, useRef } from 'react'
 import Task from './Task'
 
 const Body = () => {
@@ -8,6 +8,11 @@ const Body = () => {
   const [edit, setEdit] = useState(false)
   const [editIndex, setEditIndex] = useState(null)
   const [editText, setEditText] = useState('')
+
+  const taskinputref = useRef()
+  useEffect (()=>{
+    if(taskinputref.current) taskinputref.current.focus()
+  })
   
   const deleteItem = (index) => {
     const newList = [...listItem]
@@ -43,6 +48,7 @@ const Body = () => {
               placeholder='Enter a task'
               type='text' 
               value={task}
+              ref={taskinputref}
               onChange={(e)=>setTask(e.target.value)} 
             />
             <button 
