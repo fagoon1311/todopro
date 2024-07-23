@@ -5,12 +5,14 @@ import Body from './components/Body';
 
 function App() {
   return (
-    <div className=" App absolute inset-0 -z-10 h-full w-full items-center px-5 py-2 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]">
-      <div className='flex p-4 m-2 rounded-md shadow-md items-center justify-center'><h1 className='text-white text-5xl font-bold'>To-do-List</h1></div>
+    <div className="App relative min-h-screen w-full flex flex-col items-center px-5 py-2 bg-fixed" style={{ background: 'radial-gradient(125% 125% at 50% 10%, #000 40%, #63e 100%)' }}>
+      <div className='flex p-4 m-2 rounded-md shadow-md items-center justify-center'>
+        <h1 className='text-white text-5xl font-bold'>To-do-List</h1>
+      </div>
       <Body />
     </div>
-    // <Rick />
   );
 }
+
 
 export default App;

@@ -10,9 +10,10 @@ const Body = () => {
   const [editText, setEditText] = useState('')
 
   const taskinputref = useRef()
+  
   useEffect (()=>{
     if(taskinputref.current) taskinputref.current.focus()
-  })
+  }, [])
   
   const deleteItem = (index) => {
     const newList = [...listItem]
@@ -66,7 +67,9 @@ const Body = () => {
         </span>
         <div className='pt-5'>
           {listItem && listItem.map((i ,index)=>
-            <Task 
+            <Task
+            listItem={listItem}
+            setListItem={setListItem} 
             itemno={index+1} 
             info={i} 
             deleteItem={deleteItem} 
